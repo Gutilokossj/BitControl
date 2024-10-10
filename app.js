@@ -4,15 +4,14 @@ var cadastrarBtn = document.getElementById("cadastrarBtn")
 
 var body = document.querySelector("body");
 
-const nomeCompleto = document.getElementById("nomeCompleto").value;
-const email = document.getElementById("email").value;
-const senha = document.getElementById("senha").value;
-const telefone = document.getElementById("telefone").value;
+const nomeCompleto = document.getElementById("nomeCompleto");
+const email = document.getElementById("email");
+const senha = document.getElementById("senha");
+const telefone = document.getElementById("telefone");
 
 const apiUrl = "http://localhost:8080/login";
 
-var jsonData = `{"nomeCompleto": "${nomeCompleto}", "email":"${email}", "senha":"${senha}", "telefone":"${telefone}"}`;
-var obj = JSON.parse(jsonData);
+
 
 loginBtn.addEventListener('click', () =>{
     body.className = "sign-in-js";
@@ -25,9 +24,16 @@ cadastrarBtn.addEventListener('click', () =>{
 saveBtn.addEventListener("click", function (event) {
     event.preventDefault();
 
+    const jsonData = {
+        nomeCompleto: nomeCompleto.value,
+        email: email.value,
+        senha: senha.value,
+        telefone: telefone.value
+    };
+
     fetch(apiUrl, {
         method: "POST",
-        body: JSON.stringify(obj),
+        body: JSON.stringify(jsonData),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
