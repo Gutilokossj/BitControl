@@ -1,6 +1,7 @@
 package com.bitcontrol.api.controllers;
 
 
+import com.bitcontrol.api.usuario.DadosCadastroUsuário;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     @PostMapping
-    public ResponseEntity<Void> cadastrarUsuario(@RequestBody String json){
-        System.out.println(json);
+    public ResponseEntity<Void> cadastrarUsuario(@RequestBody DadosCadastroUsuário dados){
+        System.out.println(dados.nomeCompleto());
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
